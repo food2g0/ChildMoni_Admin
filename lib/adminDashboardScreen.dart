@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'ReportScreen.dart';
+
 class AdminDashboardScreen extends StatefulWidget {
   const AdminDashboardScreen({super.key});
 
@@ -76,8 +78,14 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
             ),
           ),
           _buildDrawerItem(Icons.dashboard, 'Dashboard', () {}),
-          _buildDrawerItem(Icons.person, 'Manage Users', () {}),
-          _buildDrawerItem(Icons.settings, 'Settings', () {}),
+
+          _buildDrawerItem(Icons.report, 'View Reports', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ReportScreen()),
+            );
+          }),
+
           const Spacer(),
           _buildDrawerItem(Icons.logout, 'Logout', _logout),
         ],
